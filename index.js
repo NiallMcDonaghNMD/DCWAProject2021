@@ -77,9 +77,18 @@ app.get('/addLecturer', (req, res) => {
 })
 
 app.post('/addLecturer', (req, res) => {
-    if (req.body._id.length > 2) {
-        res.send("ID TOO LONG")
-    } else {
+    if (req.body._id.length < 4) {
+        res.send("ID must be 4 characters")
+    } else if (req.body.name < 4)
+    {
+        res.send("Name must be at least 5 characters")
+    }
+    else if (req.body.dept < 3)
+    {
+        res.send("Dept must be 3 characters")
+    }
+    else
+    {
         mongoDAO.addLecturer(req.body._id, req.body.name, req.body.dept)
             .then((result) => {
                 res.redirect('listLecturers')
