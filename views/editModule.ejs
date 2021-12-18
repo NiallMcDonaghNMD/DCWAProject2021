@@ -2,17 +2,17 @@
 <body>
     <h1>Edit Module</h1>
     <ul>
-        <li>Lecturer ID must be 4 characters</li>
-        <li>Name must be at least 5 characters</li>
-        <li>Dept must be 3 characters</li>
+        <li name="modId">The Module ID is not editable.</li>
+        <li name="modName">The module Name should be a minimum of 5 characters.</li>
+        <li name="modCredits">The Credits should be 5, 10 or 15.</li>
       </ul>
     <form action="/editModule" method="POST">
-    <label>Module ID:</label>
-    <input type="text" name="mid"><br>
+    <label >Module ID:</label>
+    <input type="text" name="mid" value='<%=modId%>'><br>
     <label>Name</label>
-    <input type="text" name="name"><br>
+    <input type="text" name="name" value='<%=modName%>'''><br>
     <label>Credits</label>
-    <input type="text" name="credits"><br>
+    <input type="text" name="credits" value='<%=modCredits%>'><br>
     <input type="submit" value="OK">
     </form>
     </body>

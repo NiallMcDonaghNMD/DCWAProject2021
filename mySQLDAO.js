@@ -33,6 +33,18 @@ var getModules = function () {
 
 }
 
+var getModuleSpecific = function (mid) {
+    return new Promise((resolve, reject) => {
+        pool.query("SELECT * from module WHERE mid='"+mid+"';")
+            .then((result) => {
+                resolve(result)
+            })
+            .catch((error) => {
+                reject(error)
+            })
+    })
+}
+
 var getStudents = function () {
     return new Promise((resolve, reject) => {
 
@@ -74,4 +86,4 @@ var deleteStudent = function (sid) {
             })
     })
 }
-module.exports = { getModules, getStudents, deleteStudent, addStudent }
+module.exports = { getModules, getStudents, deleteStudent, addStudent, getModuleSpecific }

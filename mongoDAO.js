@@ -1,4 +1,5 @@
 const e = require('express');
+const res = require('express/lib/response');
 const { MongoClient } = require('mongodb');
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -9,8 +10,8 @@ const collName = 'lecturers';
 var lecturersDb;
 var lecturers;
 
-MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then((client) =>{
+MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then((client) => {
         lecturersDb = client.db(dbName);
         lecturers = lecturersDb.collection(collName);
     })
@@ -18,7 +19,7 @@ MongoClient.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
         console.log(error);
     });
 
-var getLecturers = function(){
+var getLecturers = function () {
     return new Promise((resolve, reject) => {
         var cursor = lecturers.find()
         cursor.toArray()
@@ -32,19 +33,19 @@ var getLecturers = function(){
     })
 }
 
-var addLecturer = function(_id,name, dept )
-{
+var addLecturer = function (_id, name, dept) {
     return new Promise((resolve, reject) => {
-        lecturers.insertOne({"_id: ":_id, "name": name, "dept": dept})
-            .then((result) =>{
+
+        lecturers.insertOne({ "_id: ": _id, "name": name, "dept": dept })
+            .then((result) => {
                 resolve(result)
             })
             .catch((error) => {
                 reject(error)
             })
+        
     })
-
 }
 
-module.exports = {getLecturers, addLecturer};
+module.exports = { getLecturers, addLecturer };
 
