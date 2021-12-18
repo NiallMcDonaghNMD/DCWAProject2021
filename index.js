@@ -84,7 +84,7 @@ app.post('/addStudent', (req, res) => {
     
         mySQLDAO.addStudent(req.body.sid, req.body.name, req.body.gpa)
         .then((result) => {
-            res.redirect('/listStudent')
+            res.redirect('/listStudents')
         })
         .catch((error) => {
             if(error.message.includes("11000"))
@@ -101,7 +101,7 @@ app.post('/addStudent', (req, res) => {
 app.get('/students/delete/:sid', (req, res) => {
     mySQLDAO.deleteStudent(req.params.sid)
             .then((result) =>{
-                res.redirect('listStudents');            
+                res.redirect('/listStudents');            
             })
     
             .catch((error) => {
