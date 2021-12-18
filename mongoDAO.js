@@ -32,4 +32,19 @@ var getLecturers = function(){
     })
 }
 
-module.exports = {getLecturers};
+var addLecturer = function(_id,name, dept )
+{
+    return new Promise((resolve, reject) => {
+        lecturers.insertOne({"_id: ":_id, "name": name, "dept": dept})
+            .then((result) =>{
+                resolve(result)
+            })
+            .catch((error) => {
+                reject(error)
+            })
+    })
+
+}
+
+module.exports = {getLecturers, addLecturer};
+

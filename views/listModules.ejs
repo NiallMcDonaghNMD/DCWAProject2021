@@ -1,0 +1,33 @@
+<a href="/addLecturer">Add lecturer</a>
+<br> 
+<a href="/">Home page</a> 
+<br>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Dept</th>
+        <th>Update</th>
+        <th>Students</th>
+    </tr>
+    <% modules.forEach((modules)=>
+        { %>
+        <tr>
+            <td>
+                <%= modules.mid %>
+            </td>
+            <td>
+                <%= modules.name %>
+            </td>
+            <td>
+                <%= modules.credits %>
+            </td>
+            <td>
+                <a href="/editModule">Update</a>
+            </td>
+            <td>
+                <a href="/addLecturer">List</a>
+            </td>
+        </tr>
+        <% }) %>
+</table>
